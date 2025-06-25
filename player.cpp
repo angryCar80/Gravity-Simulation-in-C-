@@ -12,6 +12,9 @@ Player::Player()
   fraction = 750;
   maxspeed = 300;
   thrust = 200;
+  // Hitbox values
+  width = 90;
+  height = 80;
 }
 
 void Player::Draw(){
@@ -22,6 +25,8 @@ void Player::Update(float dt){
   velocity += gravity * dt;
   position.y += velocity * dt;
 
+}
+void Player::Move(float dt){
   if (IsKeyDown(KEY_UP)){
     velocity -= thrust;
   }
@@ -44,4 +49,21 @@ void Player::Update(float dt){
   }
   if (vx >= maxspeed) vx = maxspeed;
   if (vx <= -maxspeed) vx = -maxspeed;
+  position.x += vx * dt;
+}
+
+void Player::DrawHitbox(bool isColliding)
+{
+  Color outlineColor = isColliding ? RED : GREEN;
+  DrawRectangleLines(
+    static_cast<int>(position.x - width / 2),
+    static_cast<int>(position.y - height / 2),
+    width,
+    height,
+    outlineColor
+  );
+}
+
+Rectangle Player::GetRec(){
+  return Rectangle {(position.x - width / 2), (position.y - height / 2), width, height};
 }
