@@ -7,11 +7,12 @@ Player::Player()
   velocity = 0;
   circleRad = 40;
   gravity = 980;
+  onGround = false;
   vx = 0;
   acceleration = 800;
   fraction = 750;
   maxspeed = 300;
-  thrust = 200;
+  thrust = 1000;
   // Hitbox values
   width = 90;
   height = 80;
@@ -27,7 +28,7 @@ void Player::Update(float dt){
 
 }
 void Player::Move(float dt){
-  if (IsKeyDown(KEY_UP)){
+  if (IsKeyDown(KEY_UP) && onGround){
     velocity -= thrust;
   }
 
@@ -37,8 +38,8 @@ void Player::Move(float dt){
   else if (IsKeyDown(KEY_LEFT)){
     vx -= acceleration * dt;
   }
-  else{
-    if( vx > 0 ){
+  else if (onGround){
+    if( vx > 0){
       vx -= fraction * dt;
       if (vx < 0) vx = 0;
     }

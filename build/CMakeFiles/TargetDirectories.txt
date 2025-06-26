@@ -1,2 +1,0 @@
-/home/angrycar/Documents/Code/Gravity-Sumelation/build/CMakeFiles/edit_cache.dir
-/home/angrycar/Documents/Code/Gravity-Sumelation/build/CMakeFiles/rebuild_cache.dir
