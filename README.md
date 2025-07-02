@@ -1,6 +1,7 @@
 Am creating this Simulation in c++ using raylib i really want to hear your feed back about it
 and ig you know a library that is better i would love to hear your opinion
-##What is The Next Step
+
+## What is The Next Step
 1. Restarting Fresh
 2. Making an Attractive object
 3. Make Particles
