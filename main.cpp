@@ -6,6 +6,7 @@
 
 #include "obstacle.hpp"
 #include "player.hpp"
+#include "raymath.h"
 
 struct Body {
   Vector2 pos;
@@ -17,8 +18,10 @@ struct Body {
 int main() {
   char velocityText[64];
   char onGroundText[20];
-  const int width = 900;
-  const int height = 700;
+  const float G =
+      50.0f;  // or 10.0f or 100.0f depending on how fast you want it
+  const int width = 1980;
+  const int height = 1080;
   InitWindow(width, height, "Gravity Simulation");
   SetTargetFPS(60);
   Player player;
@@ -58,16 +61,22 @@ int main() {
     }
 
     for (size_t i = 0; i < bodies.size(); ++i) {
-    for (size_t j = 0; j < bodies.size(); ++j) {
-        if (i == j) continue; // skip self
-
+      for (size_t j = 0; j < bodies.size(); ++j) {
+        if (i == j) continue;  // skip self
         Vector2 r = Vector2Subtract(bodies[i].pos, bodies[j].pos);
-        float d2 = Vector2LengthSqr(r) + 1e-4f;  // square distance + softening
-        float invR3 = 1.0f / (sqrtf(d2) * d2);   // 1 / |r|³
-
-        acc[i] = Vector2Add(acc[i], Vector2Scale(r, -G * bodies[j].mass * invR3));
+        float d2 = Vector2LengthSqr(r) + 1e-4f;
+        float invR3 = 1.0f / (sqrtf(d2) * d2);
+        acc[i] =
+            Vector2Add(acc[i], Vector2Scale(r, -G * bodies[j].mass * invR3));
+      }
     }
-}
+
+    for (size_t i = 0; i < bodies.size(); ++i) {
+      bodies[i].vel = Vector2Add(bodies[i].vel, Vector2Scale(acc[i], dt));
+      bodies[i].pos =
+          Vector2Add(bodies[i].pos, Vector2Scale(bodies[i].vel, dt));
+    }
+
     BeginDrawing();
     ClearBackground(BLACK);
     snprintf(velocityText, sizeof(velocityText), "Velocity: %.2f",
@@ -80,7 +89,7 @@ int main() {
     player.Draw();
     player.DrawHitbox(false);
     obstacle.Draw();
-
+    for (auto &b : bodies) DrawCircleV(b.pos, 4 + logf(b.mass), b.tint);
     EndDrawing();
   }
 
