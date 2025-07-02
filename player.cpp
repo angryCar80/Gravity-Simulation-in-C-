@@ -12,7 +12,7 @@ Player::Player()
   acceleration = 800;
   fraction = 750;
   maxspeed = 300;
-  thrust = 1000;
+  thrust = 1500;
   // Hitbox values
   width = 90;
   height = 80;
@@ -68,3 +68,4 @@ void Player::DrawHitbox(bool isColliding)
 Rectangle Player::GetRec(){
   return Rectangle {(position.x - width / 2), (position.y - height / 2), width, height};
 }
+

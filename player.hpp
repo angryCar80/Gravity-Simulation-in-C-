@@ -10,11 +10,14 @@ class Player{
     void Move(float dt);
     void setY(float y) { position.y = y; };
     float getHeight() const  {return height;}
+
+    
   // Must have for checking the collision
     void DrawHitbox(bool isColliding);
     Rectangle GetRec();
   // setting values
     float velocity;
+    Vector2 position;
     bool onGround;
   private:
     float circleRad;
@@ -24,7 +27,7 @@ class Player{
     float fraction;
     float maxspeed;
     float thrust;
-    Vector2 position;
+    
 
     //The Values for the hitbox
     float width;
