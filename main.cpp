@@ -3,9 +3,9 @@
 
 struct Body{
   Vector2 pos;
-  float vel;
+  Vector2 vel;
   float mass;
-  float tint;
+  Color tint;
 };
 
 int main (int argc, char *argv[]) {
@@ -15,8 +15,9 @@ int main (int argc, char *argv[]) {
   SetTargetFPS(60);
 
   std::vector<Body> bodies = {
-
+    {{100, 100}, {0, 0}, 50000, GREEN },
   };
+
 
   while(!WindowShouldClose()){
     BeginDrawing();
