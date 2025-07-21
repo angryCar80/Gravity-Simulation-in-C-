@@ -9,3 +9,5 @@ and ig you know a library that is better i would love to hear your opinion
 
 
 and That's it Guys
+
+i finished the simulation in c++ maybe just maybe ill make it 3d ... and give me what i should use ?
