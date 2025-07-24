@@ -28,9 +28,9 @@ int main() {
 
   // 2. Create bodies ONCE (outside the game loop) -------------------------
   std::vector<Body> bodies = {
-      {{400, 300}, {0, 0}, 5000, YELLOW},     // big central sun
-      {{300, 300}, {0, -60}, 1000, SKYBLUE},  // planet A (counter‑clockwise)
-      {{600, 300}, {0, 60}, 1000, RED}        // planet B (clockwise)
+      {{400, 300}, {0, 0}, 9000, YELLOW},     // big central sun
+      {{300, 300}, {0, -60}, 2000, SKYBLUE},  // planet A (counter‑clockwise)
+      {{600, 300}, {0, 60}, 4000.0f, RED}        // planet B (clockwise)
   };
 
   // Temporary array that stores acceleration for each body every frame
