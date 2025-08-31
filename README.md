@@ -14,8 +14,7 @@ i use raylib for the project and raylib is perfect and i didnt used any **oop** 
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
 
-the version  now is 1.0 you can still use the cli tool but am still working on it by adding more stuff like ` saving settings ` and loading them when you open the cli
-
+the version  now is 1.0 you can use the simulation and tweek stuff in it add another planet and stuff but i think that i can add other things like ui to make it easier for the user
 # Table of Contents
 
 This is a table of contents for your project. It helps the reader navigate through the README quickly.
